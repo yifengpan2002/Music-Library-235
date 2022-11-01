@@ -1,0 +1,8 @@
+{% extends 'layout.html' %} {% block content %}
+    <h3>{{original}}</h3>
+    <h3>{{after}}</h3>
+    {% for artist in all_artist %}
+        <button class="btn-general" onclick="location.href='{{url_for('browse_bp.display_all_tracks', artist_name=artist.full_name)}}'" >{{artist.full_name}}</button>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if track is not none %}
+        <h2 id="allTrackHeader"> {{ track.title }} </h2>
+        <h3 id="artistName"> {{ track.artist.full_name }} </h3>
+        <h4>{{ track.album.title }}</h4>
+        <div id="allTrackDetails">
+        <p>Track ID: {{ track.track_id }}</p>
+        <p>Track Duration: {{ track.track_duration }}</p>
+        <p>Genres: {% for genre in track.genres %} ({{ genre.name }}) {% endfor %}</p>
+        </div>
+        <br><br><br><br><br><br>
+        <h2>All Comment</h2>
+        <ul class = "comment">
+            {% for comment in all_user_comment %}
+                <li>Rating:{{comment.rating}}, {{comment.review_text}}, {{comment.simplify_date}}</li>
+
+            {% endfor %}
+            <br>
+        </ul>
+        <form method = "POST">
+            {{ form.csrf_token }}
+            {{form.rating.label}}
+            {{form.rating(class = "number_field")}}
+            <br>
+            {{form.comment.label}}
+            {{form.comment(size = 100, placeholder="type your comment", class="textarea", cols="50", rows="6", wrap="hard")}}
+            {{form.submit}}
+        </form>
+    {% else %}
+        <h1>The track you looking for is not exist</h1>
+    {% endif %}
+
+{% endblock %}

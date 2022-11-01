@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Music Browser</title>
+</head>
+<body>
+    <div id="body">
+        {% include 'sidebar.html' %}
+        {% include 'header.html' %}
+            <div id='searchBar'>
+                <form id="bar" action="{{ url_for("searchBp.searchResult")}}" method="post">
+                    <input type="text" id="search" name="search" placeholder="Search">
+                </form>
+            </div>
+            <div id="container">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+</body>
+</html>

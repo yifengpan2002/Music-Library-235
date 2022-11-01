@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} {% block content %}
+    <h1>Search results for {{ query }}</h1>
+    <h6>Page: {{ page_number }}/{{ total_pages }}</h6>
+    {% for track in all_the_track %}
+        <h2 id="allTrackHeader"> {{ track.title }} </h2>
+        <h3 id="artistName"> {{ track.artist.full_name }} </h3>
+        <h4>{{ track.album.title }}</h4>
+        <div id="allTrackDetails">
+            <p>Track ID: {{ track.track_id }}</p>
+            <p>Track Duration: {{ track.track_duration }}</p>
+            <p>Genres: {% for genre in track.genres %} ({{ genre.name }}) {% endfor %}</p>
+        <div id = "comment_button">
+                <button class="btn-general"
+                        onclick="location.href='{{url_for('browse_bp.comment_on_article',
+                        id=track.track_id, title=track.title )}}'">
+                    Review</button>
+            </div>
+        {% if track not in fav_tracks %}
+            <div id="favButtonDiv">
+                <button class="btn-general"
+                    onclick="location.href='{{url_for('faveBp.added',
+                    track=track)}}'">
+                Add to Favorites</button>
+            </div>
+        {% endif %}
+        </div>
+    {% endfor %}
+    {% if previous_url is not none %}
+        <button class="btn-general" id="previousButton" onclick="location.href='{{ first_url }}'">first</button>
+        <button class="btn-general" id="previousButton" onclick="location.href='{{previous_url}}'">previous</button>
+    {% endif %}
+    {% if next_url is not none %}
+        <button class="btn-general" id="nextButton" onclick="location.href='{{ last_url }}'">last</button>
+        <button class="btn-general" id="nextButton" onclick="location.href='{{next_url}}'">next</button>
+    {% endif %}
+{% endblock %}

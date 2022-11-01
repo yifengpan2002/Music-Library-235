@@ -1,0 +1,17 @@
+<div class="sidenav">
+    <nav id="'navbar">
+        <h2 id="navHeader">Music Browser</h2>
+        <a class="btn-nav" href="{{ url_for('home_bp.home') }}">Home</a>
+        <a class="btn-nav" href="{{ url_for('authBp.register') }}">Register</a>
+        <a class="btn-nav" href="{{ url_for('authBp.login') }}">Login</a>
+        <a class="btn-nav" href="{{ url_for('authBp.logout') }}">Logout</a>
+        <a class="btn-nav" href="{{ url_for('browse_bp.display_all_tracks') }}">All Music</a>
+        <a class="btn-nav" href="{{ url_for('faveBp.display_fav_tracks') }}">Favorites</a>
+        <a class="btn-nav" href="{{ url_for('browse_bp.display_all_genres') }}">Genres</a>
+        <a class="btn-nav" href="{{ url_for('browse_bp.display_all_artists') }}">Artist</a>
+        <a class="btn-nav" href="{{ url_for('browse_bp.display_all_albums') }}">Album</a>
+    </nav>
+    <div id="navFooter">
+        COMPSCI 235 Software Development Methodologies
+    </div>
+</div>
